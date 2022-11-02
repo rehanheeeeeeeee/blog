@@ -66,6 +66,7 @@ export default function Home({ randomId }) {
         <div className="flex flex-col max-w-7xl w-[95vw]">
           {articles.map((article) => (
             <PostCard
+              key={article.id}
               id={article.id}
               title={article.title}
               breif={article.breif}

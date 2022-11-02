@@ -35,6 +35,6 @@ export default function Layout({ children }) {
       });
     };
     get();
-  }, []);
+  }, [dispatch]);
   return <div>{children}</div>;
 }

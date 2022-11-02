@@ -88,7 +88,7 @@ export default function Article({ article }) {
       });
     };
     q();
-  }, []);
+  }, [article.id]);
 
   console.log(comments);
 
@@ -141,8 +141,9 @@ export default function Article({ article }) {
               </button>
             </div>
             <div className="space-y-7">
-              {comments?.map((comment) => (
+              {comments?.map((comment, index) => (
                 <Comment
+                  key={index}
                   username={comment.username}
                   text={comment.text}
                   created={comment.created}

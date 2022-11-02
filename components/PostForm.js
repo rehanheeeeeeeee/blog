@@ -37,6 +37,7 @@ const styles = {
 
 export default function ({ setModalOpen }) {
   const user = auth.currentUser;
+  const { displayName } = user;
   const [bannerImage, setBannerImage] = useState("");
 
   return (
@@ -58,7 +59,7 @@ export default function ({ setModalOpen }) {
         getDownloadURL(storageRef).then((url) => {
           console.log(url);
           addDoc(collection(db, "articles"), {
-            username: user.displayName,
+            username: displayName,
             email: user.email,
             pfp: user.photoURL,
             postedOn: serverTimestamp(),

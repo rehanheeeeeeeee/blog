@@ -48,7 +48,7 @@ export default function ArticleMain({ article, handleComments, comments }) {
       });
     };
     q();
-  }, []);
+  }, [article.id]);
 
   const like = () => {
     const colRef = doc(db, "articles", article.id, "likes", user.uid);
@@ -71,6 +71,7 @@ export default function ArticleMain({ article, handleComments, comments }) {
         postedOn={article.postedOn}
       />
       <Image
+        alt="Banner"
         src={article.bannerImage}
         width={300}
         height={400}
@@ -119,6 +120,7 @@ const ArticleHeader = ({ username, pfp, postLength, postedOn }) => (
   <div className="flex flex-row items-center justify-between flex-wrap space-x-2 space-y-4">
     <div className="flex flex-row space-x-3 items-center">
       <Image
+        alt="Profile Photo"
         src={pfp}
         width={30}
         height={30}

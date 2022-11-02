@@ -49,7 +49,7 @@ export default function Recommendations({
       setUser(users[0]);
     };
     get();
-  }, []);
+  }, [username]);
 
   console.log(user);
 
@@ -157,13 +157,13 @@ const RecommendedBlogs = ({ title }) => {
         })
       )
     );
-  }, []);
+  }, [title]);
   return (
     <div className="flex flex-col items-start w-full">
       <h2 className="font-medium">More from Medium</h2>
       <div>
-        {recommendedArticles?.map((article) => {
-          return <RecommendedBlog article={article} />;
+        {recommendedArticles?.map((article, index) => {
+          return <RecommendedBlog key={index} article={article} />;
         })}
       </div>
     </div>
