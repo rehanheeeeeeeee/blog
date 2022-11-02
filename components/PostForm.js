@@ -35,7 +35,7 @@ const styles = {
   inputfile: (touched, error) => `rounded-sm flex-1 px-3`,
 };
 
-export default function ({ setModalOpen }) {
+export default PostForm = ({ setModalOpen }) => {
   const user = auth.currentUser;
   const { displayName } = user;
   const [bannerImage, setBannerImage] = useState("");
@@ -160,4 +160,4 @@ export default function ({ setModalOpen }) {
       )}
     </Formik>
   );
-}
+};
