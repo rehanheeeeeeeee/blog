@@ -63,7 +63,7 @@ export default function Home({ randomId }) {
     <div>
       <Head>
         <title>Medium</title>
-        <link rel="link" href="/smallmedium.png"></link>
+        <link rel="icon" href="/smallmedium.png"></link>
       </Head>
       <Header setModalOpen={setModalOpen} />
       <Banner id={randomId} />
