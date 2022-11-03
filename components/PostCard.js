@@ -30,7 +30,7 @@ export default function PostCard({
           <h2 className="text-[3.5vw] leading-6 md:text-2xl font-bold max-w-lg">
             {title}
           </h2>
-          <p className="text-gray-500 max-w-md">{breif}</p>
+          <p className="text-gray-500 max-w-md">{breif.slice(0, 101)}...</p>
           <div className="flex flex-row justify-between items-center">
             <p className="text-gray-600 text-sm">
               {new Date(postedOn?.seconds).toDateString()} · {postLength} min

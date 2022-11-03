@@ -39,7 +39,10 @@ export default function ReadersNav() {
         <BsPencilSquare size={26} className={styles.option} />
       </div>
       <Image
-        src={user?.photoURL}
+        src={
+          user?.photoURL ||
+          "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsoccerpointeclaire.com%2Ffor-coaches%2Fdefault-profile-pic-e1513291410505%2F&psig=AOvVaw1mU523ceMEbuDG_We82RA7&ust=1667602385264000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCKjslZKNk_sCFQAAAAAdAAAAABAI"
+        }
         width={200}
         height={200}
         className={styles.pfp}

@@ -51,14 +51,14 @@ export default function ArticleMain({ article, handleComments, comments }) {
   }, [article.id]);
 
   const like = () => {
-    const colRef = doc(db, "articles", article.id, "likes", user.uid);
+    const colRef = doc(db, "articles", article.id, "likes", user?.uid);
     setDoc(colRef, {
-      email: user.email,
+      email: user?.email,
     });
   };
 
   const dislike = () => {
-    const colRef = doc(db, "articles", article.id, "likes", user.uid);
+    const colRef = doc(db, "articles", article.id, "likes", user?.uid);
     deleteDoc(colRef);
   };
 
@@ -87,31 +87,33 @@ export default function ArticleMain({ article, handleComments, comments }) {
       <div className="flex flex-col space-y-3 pb-5">
         <p className="font-sans">{article.text}</p>
       </div>
-      <div className="w-full flex flex-row justify-center">
-        <div className="shadow-xl fixed bottom-10 bg-zinc-50 rounded-3xl flex flex-row items-center justify-between px-7 py-3 space-x-6">
-          <div className="flex flex-row items-center space-x-3">
-            {likes?.includes(user.email) ? (
-              <BsHandThumbsUpFill
-                size={30}
-                onClick={dislike}
-                className={styles.icon(false, true)}
-              />
-            ) : (
-              <BsHandThumbsUp
-                onClick={like}
-                size={30}
-                className={styles.icon(false)}
-              />
-            )}
-            <p>{likes?.length}</p>
+      {user && (
+        <div className="w-full flex flex-row justify-center">
+          <div className="shadow-xl fixed bottom-10 bg-zinc-50 rounded-3xl flex flex-row items-center justify-between px-7 py-3 space-x-6">
+            <div className="flex flex-row items-center space-x-3">
+              {likes?.includes(user.email) ? (
+                <BsHandThumbsUpFill
+                  size={30}
+                  onClick={dislike}
+                  className={styles.icon(false, true)}
+                />
+              ) : (
+                <BsHandThumbsUp
+                  onClick={like}
+                  size={30}
+                  className={styles.icon(false)}
+                />
+              )}
+              <p>{likes?.length}</p>
+            </div>
+            <div className={styles.icon(true)} onClick={handleComments}>
+              <BsChat size={27} className={styles.icon()} />
+              <p>{comments}</p>
+            </div>
+            <FiMoreHorizontal size={27} className={styles.icon()} />
           </div>
-          <div className={styles.icon(true)} onClick={handleComments}>
-            <BsChat size={27} className={styles.icon()} />
-            <p>{comments}</p>
-          </div>
-          <FiMoreHorizontal size={27} className={styles.icon()} />
         </div>
-      </div>
+      )}
     </div>
   );
 }
