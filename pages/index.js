@@ -26,6 +26,7 @@ const customStyles = {
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/articlesSlice";
 import { IoClose } from "react-icons/io5";
+import Head from "next/head";
 
 export const getStaticProps = async () => {
   const colRef = query(collection(db, "articles"));
@@ -60,6 +61,10 @@ export default function Home({ randomId }) {
   }, []);
   return (
     <div>
+      <Head>
+        <title>Medium</title>
+        <link rel="link" href="/smallmedium.png"></link>
+      </Head>
       <Header setModalOpen={setModalOpen} />
       <Banner id={randomId} />
       <div className="w-full flex justify-center">
